@@ -1,4 +1,4 @@
-name: zenko-cosbench
+name: zenko-cosbench-driver
 home: https://github.com/intel-cloud/cosbench
 version: 0.0.1
 description: a benchmark tool for cloud object storage service

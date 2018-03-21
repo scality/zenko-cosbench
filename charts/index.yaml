@@ -1,0 +1,33 @@
+apiVersion: v1
+entries:
+  zenko-cosbench-controller:
+  - created: 2018-03-21T21:46:51.341383724Z
+    description: a benchmark tool for cloud object storage service
+    digest: fffeb700c2e017a0da7763724ad110937c3171674d4ea9fb5ea460ac0288dc33
+    home: https://github.com/intel-cloud/cosbench
+    maintainers:
+    - email: zenko-platform@scality.com
+      name: Scality Zenko Platform Team
+    name: zenko-cosbench-controller
+    sources:
+    - https://github.com/intel-cloud/cosbench
+    - https://github.com/Scality/zenko-cosbench
+    urls:
+    - zenko-cosbench-controller-0.0.1.tgz
+    version: 0.0.1
+  zenko-cosbench-driver:
+  - created: 2018-03-21T21:46:51.341701215Z
+    description: a benchmark tool for cloud object storage service
+    digest: e54088064c4cfd8ff9e3ea44a8130aab86f9c1647d0b028a3b527ae2f6ac65c7
+    home: https://github.com/intel-cloud/cosbench
+    maintainers:
+    - email: zenko-platform@scality.com
+      name: Scality Zenko Platform Team
+    name: zenko-cosbench-driver
+    sources:
+    - https://github.com/intel-cloud/cosbench
+    - https://github.com/Scality/zenko-cosbench
+    urls:
+    - zenko-cosbench-driver-0.0.1.tgz
+    version: 0.0.1
+generated: 2018-03-21T21:46:51.340832891Z
