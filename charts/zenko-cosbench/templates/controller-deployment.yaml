@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "cosbench-controller.fullname" . }}
+  labels:
+    app: {{ template "cosbench.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ template "cosbench.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.controller.image.repository }}:{{ .Values.controller.image.tag }}"
+          imagePullPolicy: {{ .Values.controller.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.controller.internalPort }}
+          env:
+            - name: LOG_LEVEL
+              value: "DEBUG"
+            - name: DRIVERS
+              value: "{{ .Release.Name }}-cosbench-driver-0.{{ .Release.Name }}-cosbench-driver,{{ .Release.Name }}-cosbench-driver-1.{{ .Release.Name }}-cosbench-driver,{{ .Release.Name }}-cosbench-driver-2.{{ .Release.Name }}-cosbench-driver"
+{{- end }}
+          args: ['java' '-Dcosbench.tomcat.config=conf/controller-tomcat-server.xml','-server','-cp','main/*','org.eclipse.equinox.launcher.Main','-configuration','controller.conf','-console','19089']
