@@ -4,7 +4,7 @@
 
 BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 VCS_REF=$(git rev-parse --verify HEAD)
-VERSION=0.0.1
+VERSION=0.0.2
 
 docker build \
         -t "zenko/zenko-cosbench:${VERSION}" \

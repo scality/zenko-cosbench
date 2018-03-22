@@ -18,11 +18,12 @@ if [[ "$DRIVERS" ]]; then
 fi
 
 if [[ "$LOG_LEVEL" ]]; then
-    if [[ "$LOG_LEVEL" == "info" || "$LOG_LEVEL" == "debug" || "$LOG_LEVEL" == "trace" ]]; then
+    if [[ "$LOG_LEVEL" == "TRACE" || "$LOG_LEVEL" == "DEBUG" || "$LOG_LEVEL" == "INFO" || "$LOG_LEVEL" == "WARN" || "$LOG_LEVEL" == "ERROR"]]; then
 	crudini --set controller.conf controller log_level ${LOG_LEVEL}
+	crudini --set driver.conf controller log_level ${LOG_LEVEL}
         echo "Log level has been modified to $LOG_LEVEL"
     else
-        echo "The log level you provided is incorrect (info/debug/trace)"
+        echo "The log level you provided is incorrect (TRACE/DEBUG/INFO/WARN/ERROR)"
     fi
 fi
 
