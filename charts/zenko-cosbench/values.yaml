@@ -1,6 +1,6 @@
 
 controller:
-  name: master
+  name: cosbench-controller
   type: ClusterIP
   image:
     repository: docker.io/zenko/zenko-cosbench
@@ -11,7 +11,7 @@ controller:
   logLevel: DEBUG
 
 driver:
-  name: driver
+  name: cosbench-driver
   type: ClusterIP
   replicaCount: 3
   antiAffinity: soft
