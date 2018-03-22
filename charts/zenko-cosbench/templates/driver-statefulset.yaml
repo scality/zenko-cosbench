@@ -44,8 +44,8 @@ spec:
         ports:
           - containerPort: {{ .Values.driver.internalPort }}        
         env:
-	  - name: LOG_LEVEL
-	    value: "DEBUG"
+          - name: LOG_LEVEL
+            value: "DEBUG"
         args: ['java' '-Dcosbench.tomcat.config=conf/driver-tomcat-server.xml','-server','-cp','main/*','org.eclipse.equinox.launcher.Main','-configuration','driver.conf','-console','18089']
         resources:
 {{ toYaml .Values.driver.resources | indent 10 }}
