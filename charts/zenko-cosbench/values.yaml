@@ -12,7 +12,6 @@ controller:
 
 driver:
   name: cosbench-driver
-  type: ClusterIP
   replicaCount: 3
   antiAffinity: soft
   image:
