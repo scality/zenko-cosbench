@@ -26,5 +26,4 @@ spec:
               value: "DEBUG"
             - name: DRIVERS
               value: "{{ .Release.Name }}-cosbench-driver-0.{{ .Release.Name }}-cosbench-driver,{{ .Release.Name }}-cosbench-driver-1.{{ .Release.Name }}-cosbench-driver,{{ .Release.Name }}-cosbench-driver-2.{{ .Release.Name }}-cosbench-driver"
-{{- end }}
-          args: ['java' '-Dcosbench.tomcat.config=conf/controller-tomcat-server.xml','-server','-cp','main/*','org.eclipse.equinox.launcher.Main','-configuration','controller.conf','-console','19089']
+          args: ['java','-Dcosbench.tomcat.config=conf/controller-tomcat-server.xml','-server','-cp','main/*','org.eclipse.equinox.launcher.Main','-configuration','controller.conf','-console','19089']

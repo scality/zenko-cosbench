@@ -18,6 +18,16 @@ spec:
         release: "{{ .Release.Name }}"
         heritage: "{{ .Release.Service }}"
     spec:
+      containers:
+        - name: {{ template "cosbench-driver.fullname" . }}
+          image: "{{ .Values.driver.image.repository }}:{{ .Values.driver.image.tag }}"
+          imagePullPolicy: {{ .Values.driver.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.driver.internalPort }}        
+          env:
+            - name: LOG_LEVEL
+              value: "DEBUG"
+          args: ['java','-Dcosbench.tomcat.config=conf/driver-tomcat-server.xml','-server','-cp','main/*','org.eclipse.equinox.launcher.Main','-configuration','driver.conf','-console','18089']
       affinity:
         podAntiAffinity:
         {{- if eq .Values.driver.antiAffinity "hard" }}
@@ -37,15 +47,5 @@ spec:
                   app:  {{ template "cosbench-driver.fullname" . }}
                   release: {{ .Release.Name | quote }}
         {{- end }}
-      containers:
-      - name: {{ template "cosbench-driver.fullname" . }}
-        image: "{{ .Values.driver.image.repository }}:{{ .Values.driver.image.tag }}"
-        imagePullPolicy: {{ .Values.driver.image.pullPolicy }}
-        ports:
-          - containerPort: {{ .Values.driver.internalPort }}        
-        env:
-          - name: LOG_LEVEL
-            value: "DEBUG"
-        args: ['java' '-Dcosbench.tomcat.config=conf/driver-tomcat-server.xml','-server','-cp','main/*','org.eclipse.equinox.launcher.Main','-configuration','driver.conf','-console','18089']
         resources:
 {{ toYaml .Values.driver.resources | indent 10 }}
