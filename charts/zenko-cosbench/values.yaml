@@ -4,7 +4,7 @@ controller:
   type: ClusterIP
   image:
     repository: docker.io/zenko/zenko-cosbench
-    tag: 0.0.1
+    tag: 0.0.3
     pullPolicy: IfNotPresent
   externalPort: 19088
   internalPort: 19088
@@ -16,7 +16,7 @@ driver:
   antiAffinity: soft
   image:
     repository: docker.io/zenko/zenko-cosbench
-    tag: 0.0.1
+    tag: 0.0.3
     pullPolicy: IfNotPresent
   externalPort: 18088
   internalPort: 18088
