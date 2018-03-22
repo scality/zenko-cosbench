@@ -8,6 +8,7 @@ controller:
     pullPolicy: IfNotPresent
   externalPort: 19088
   internalPort: 19088
+  logLevel: DEBUG
 
 driver:
   name: driver
@@ -20,6 +21,7 @@ driver:
     pullPolicy: IfNotPresent
   externalPort: 18088
   internalPort: 18088
+  logLevel: DEBUG
   resources:
     requests:
       cpu: 500m
