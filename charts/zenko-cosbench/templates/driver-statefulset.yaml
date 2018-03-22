@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   name: {{ template "cosbench-driver.fullname" . }}
   labels:
-    app: {{ template "cosbench-driver.fullname" . }}
+    app: {{ template "cosbench.name" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "cosbench-driver.fullname" . }}
+        app: {{ template "cosbench.name" . }}
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         release: "{{ .Release.Name }}"
         heritage: "{{ .Release.Service }}"
@@ -35,7 +35,7 @@ spec:
           - topologyKey: "kubernetes.io/hostname"
             labelSelector:
               matchLabels:
-                app:  {{ template "cosbench-driver.fullname" . }}
+                app:  {{ template "cosbench.name" . }}
                 release: {{ .Release.Name | quote }}
         {{- else if eq .Values.driver.antiAffinity "soft" }}
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -44,7 +44,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
               labelSelector:
                 matchLabels:
-                  app:  {{ template "cosbench-driver.fullname" . }}
+                  app:  {{ template "cosbench.name" . }}
                   release: {{ .Release.Name | quote }}
         {{- end }}
         resources:
