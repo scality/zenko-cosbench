@@ -23,8 +23,8 @@ WORKDIR  ${HOME_DIR}/cosbench
 EXPOSE 19088 18088
 
 COPY docker-entrypoint.sh /
-COPY controller.conf ${COSBENCH_DIR}
-COPY driver.conf ${COSBENCH_DIR}
+COPY controller.conf ${COSBENCH_DIR}/conf
+COPY driver.conf ${COSBENCH_DIR}/conf
 
 #-------------------------------------
 # DOCKER STARTUP
