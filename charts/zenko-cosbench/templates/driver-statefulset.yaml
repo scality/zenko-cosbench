@@ -17,13 +17,14 @@ spec:
         chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
         release: "{{ .Release.Name }}"
         heritage: "{{ .Release.Service }}"
+        role: driver
     spec:
       containers:
         - name: {{ template "cosbench-driver.fullname" . }}
           image: "{{ .Values.driver.image.repository }}:{{ .Values.driver.image.tag }}"
           imagePullPolicy: {{ .Values.driver.image.pullPolicy }}
           ports:
-            - containerPort: {{ .Values.driver.internalPort }}        
+            - containerPort: {{ .Values.driver.internalPort }}
           env:
             - name: LOG_LEVEL
               value: "{{ .Values.driver.logLevel }}"
