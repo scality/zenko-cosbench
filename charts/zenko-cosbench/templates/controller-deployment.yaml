@@ -1,3 +1,5 @@
+{{- $root := . -}}
+{{- $count := (atoi (printf "%d" (int64 .Values.driver.replicaCount))) -}}
 
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -27,5 +29,5 @@ spec:
             - name: LOG_LEVEL
               value: "{{ .Values.controller.logLevel }}"
             - name: DRIVERS
-              value: "{{ template "cosbench-drivers" . }}"
+              value: "{{ range $v := until $count }}{{ $root.Release.Name }}-cosbench-driver-{{ $v }}.{{ $root.Release.Name }}-cosbench-driver{{ if ne $v (sub $count 1) }},{{end}}{{end}}"
           args: ['java','-Dcosbench.tomcat.config=conf/controller-tomcat-server.xml','-server','-cp','main/*','org.eclipse.equinox.launcher.Main','-configuration','conf/.controller','-console','19089']
