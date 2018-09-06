@@ -21,6 +21,12 @@ driver:
   externalPort: 18088
   internalPort: 18088
   logLevel: DEBUG
+
+  # hostAliases allow the modification of the hosts file inside a container
+  hostAliases: []
+  # - ip: "127.0.0.1"
+  #  hostnames:
+  #  - "zenko.local"
   resources:
     requests:
       cpu: 500m

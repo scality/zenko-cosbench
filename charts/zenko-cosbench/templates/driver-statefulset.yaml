@@ -50,3 +50,7 @@ spec:
         {{- end }}
         resources:
 {{ toYaml .Values.driver.resources | indent 10 }}
+      {{- if .Values.driver.hostAliases }}
+      hostAliases:
+{{ toYaml .Values.driver.hostAliases | indent 8 }}
+      {{- end }}
