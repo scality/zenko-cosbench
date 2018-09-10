@@ -29,6 +29,8 @@ spec:
             - name: LOG_LEVEL
               value: "{{ .Values.driver.logLevel }}"
           args: ['java','-Dcosbench.tomcat.config=conf/driver-tomcat-server.xml','-server','-cp','main/*','org.eclipse.equinox.launcher.Main','-configuration','conf/.driver','-console','18089']
+          resources:
+{{ toYaml .Values.driver.resources | indent 12 }}
       affinity:
         podAntiAffinity:
         {{- if eq .Values.driver.antiAffinity "hard" }}
@@ -48,5 +50,7 @@ spec:
                   app:  {{ template "cosbench.name" . }}
                   release: {{ .Release.Name | quote }}
         {{- end }}
-        resources:
-{{ toYaml .Values.driver.resources | indent 10 }}
+      {{- if .Values.driver.hostAliases }}
+      hostAliases:
+{{ toYaml .Values.driver.hostAliases | indent 8 }}
+      {{- end }}
