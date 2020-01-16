@@ -10,9 +10,8 @@ ENV COSBENCH_DIR="${HOME_DIR}/cosbench"
 # Download and install Cosbench
 #-------------------------------------
 RUN apt-get update ; apt-get install -y curl crudini
-RUN curl --retry 6 \
-    -Ls "https://github.com/intel-cloud/cosbench/releases/download/v${COSBENCH_VERSION}/${COSBENCH_VERSION}.zip" > /tmp/cosbench.zip && \
-    cd /tmp ; unzip -q /tmp/cosbench.zip && \
+COPY ${COSBENCH_VERSION}.zip /tmp/cosbench.zip
+RUN cd /tmp ; unzip -q /tmp/cosbench.zip && \
     mv "/tmp/${COSBENCH_VERSION}" ${COSBENCH_DIR} && \
     rm /tmp/cosbench.zip
 
