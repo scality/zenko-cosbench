@@ -18,7 +18,7 @@ controller:
   ##
   image:
     repository: zenko/zenko-cosbench
-    tag: 0.0.24
+    tag: 0.0.25
     pullPolicy: IfNotPresent
 
   service:
@@ -50,7 +50,7 @@ driver:
   ##
   image:
     repository: zenko/zenko-cosbench
-    tag: 0.0.24
+    tag: 0.0.25
     pullPolicy: IfNotPresent
 
   service:
