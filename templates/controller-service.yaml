@@ -9,7 +9,7 @@ metadata:
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
 spec:
-  type: {{ .Values.controller.type }}
+  type: {{ .Values.controller.service.type }}
   ports:
     - name: controller
       port: {{ .Values.controller.service.port }}
